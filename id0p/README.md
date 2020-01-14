@@ -8,7 +8,7 @@ A pre-built X environment complete with the  needed libraries to build this type
 Tighten up your logic with BPF and show the n00bs how to make Python 2x fly on Production and Enterprise networks.  Better yet?  Signed, sealed and delivered using scapy for packet or frame teardown.
 
 # creds
-tc:studentWorkshop
+tc:studentWorkshop</br>
 root:r00tWorkshop
 
 # Workshop environment prep
