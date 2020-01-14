@@ -1,0 +1,127 @@
+tce
+	- tcpdump
+	- postgresql-12
+	- postgresql-12-dev
+	- postgresql-12-client
+	- ntpclient
+	- sqlite3-bin
+	- sqlite3
+	- screen
+		- I wanted tmux, but has UTF issues
+	- python
+	- python-dev
+	- python3.6
+		- I wanted python3.6-dev, but causes X issues
+	- curl
+	- compiletc
+	- vim
+	- nano
+	- git
+	- openssh
+                For autostart add this to /opt/bootlocal.sh:
+                /usr/local/etc/init.d/openssh start
+                Add config files to /opt/.filetool.lst
+                to make config persistent if you changed them:
+                usr/local/etc/ssh/ssh_config
+                usr/local/etc/ssh/sshd_config
+                Add generated keys (8 files) to backup also for persistency
+
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python get-pip.py
+
+git clone https://github.com/stryngs/easy-thread
+git clone https://github.com/stryngs/packetEssentials
+python -m pip install easy-thread/easy-thread-*
+python3 -m pip install easy-thread/easy-thread-*
+python -m pip install packetEssentials/RESOURCEs/scapy-*
+python3 -m pip install packetEssentials/RESOURCEs/scapy-*
+python -m pip install packetEssentials/RESOURCEs/packetEssentials-*
+python3 -m pip install packetEssentials/RESOURCEs/packetEssentials-*
+
+python -m pip install ipython
+python3 -m pip install ipython
+
+
+## SSH prep
+cp /usr/local/etc/ssh/sshd_config.orig /usr/local/etc/ssh/sshd_config
+echo '/usr/local/etc/init.d/openssh start' >> /opt/bootlocal.sh
+
+BACKUP LOCATIONS (/opt/.filetool.lst)
+opt
+home
+usr/local/include/python3.6m
+usr/local/include/python2.7
+usr/local/share/python3.6
+usr/local/share/python
+usr/local/lib/python3.6
+usr/local/lib/python2.7
+etc/shadow
+etc/passwd
+usr/local/etc/ssh/sshd_config
+
+## Setup ControlPanel | Network as needed
+	- 192.168.10.254/24
+
+## PGSQL Setup
+mkdir /opt/PGSQL12_DB
+chown -R tc /opt/PGSQL12_DB
+tc@box:~$ PATH="$PATH:/usr/local/pgsql12/bin" LD_LIBRARY_PATH="/usr/local/pgsql12/lib" /usr/local/pgsql12/bin/initdb /opt/PGSQL12_DB
+The files belonging to this database system will be owned by user "tc".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "C".
+The default database encoding has accordingly been set to "SQL_ASCII".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /opt/PGSQL12_DB ... ok
+creating subdirectories ... ok
+selecting dynamic shared memory implementation ... posix
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting default time zone ... UTC
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... 2020-01-12 20:20:26.778 UTC [5994] WARNING:  no usable system locales were found
+ok
+syncing data to disk ... ok
+
+initdb: warning: enabling "trust" authentication for local connections
+You can change this by editing pg_hba.conf or using the option -A, or
+--auth-local and --auth-host, the next time you run initdb.
+
+Success. You can now start the database server using:
+
+    /usr/local/pgsql12/bin/pg_ctl -D /opt/PGSQL12_DB -l logfile start
+
+
+tc@box:~$ /usr/local/pgsql12/bin/pg_ctl -D /opt/PGSQL12_DB -l logfile start
+waiting for server to start.... done
+server started
+
+
+tc@box:~$ LD_LIBRARY_PATH="/usr/local/pgsql12/lib" /usr/local/pgsql12/bin/psql postgres
+psql (12.1)
+Type "help" for help.
+
+postgres=# CREATE DATABASE workshop;
+CREATE DATABASE
+
+
+## Prep remote connections
+echo 'host    all             all             192.168.10.0/24         md5' >> /opt/PGSQL12_DB/pg_hba.conf
+
+## Modify how you see fit in /opt/PGSQL12_DB/postgresql.conf
+listen_addresses = 'localhost,192.168.10.254'           # what IP address(es) to listen on;
+
+
+## Scapy BPF prep
+/usr/local/lib/python2.7/site-packages/scapy/arch/common.py
+	- _check_tcpdump() changed to return True always.  Will submit core patch in due time.
+
+
+## psycopg2
+wget https://files.pythonhosted.org/packages/84/d7/6a93c99b5ba4d4d22daa3928b983cec66df4536ca50b22ce5dcac65e4e71/psycopg2-2.8.4.tar.gz
+tar xf psycopg2-2.8.4.tar.gz
+LD_LIBRARY_PATH="/usr/local/pgsql12/lib" python setup.py build_ext --pg-config /usr/local/pgsql12/bin/pg_config install
