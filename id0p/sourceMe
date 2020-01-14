@@ -1,4 +1,3 @@
-## Custom
 export PATH=$PATH:/usr/local/pgsql12/bin
 export LD_LIBRARY_PATH="/usr/local/pgsql12/lib"
 export dbStart="/usr/local/pgsql12/bin/pg_ctl -D /opt/PGSQL12_DB -l /home/tc/pgsql.log start"
