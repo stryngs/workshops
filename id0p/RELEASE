@@ -1,1 +1,13 @@
+## Link
 https://drive.google.com/drive/folders/1CNAuAcj50ZWsecbR8TjzX_C3nDqBLzHh?usp=sharing
+
+## Credentials
+tc:studentWorkshop
+root:r00tWorkshop
+
+## Networking
+Exported as VM applicance from VirtualBox with the following settings:
+    - Expects a 192.168.10.0/24 in bridged mode on wlan0
+    - IP is currently set to static 192.168.10.254
+        - You can change this in the GUI by clicking ControlPanel | Network
+    - Currently setup for ssh usage.  Use tc and then sudo as needed.
