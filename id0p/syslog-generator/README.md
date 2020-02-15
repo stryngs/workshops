@@ -24,10 +24,10 @@ This script is written for Python 3+ and is meant to be run from the command lin
 
 Send 10 messages at once:
 ```
-syslog_gen.py --host 192.168.1.100 --port 514 --file sample_logs --count 10 
+syslog_gen.py --host 192.168.1.100 --port 514 --count 10 
 ```
 
 Send 10 messages every 30 seconds:
 ```
-syslog_gen.py --host 192.168.1.100 --port 514 --file sample_logs --count 10 --sleep 30 
+syslog_gen.py --host 192.168.1.100 --port 514 --count 10 --sleep 30 
 ```
