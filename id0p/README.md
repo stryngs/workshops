@@ -1,9 +1,9 @@
 # id0p
-How to build an ids||ips using python&&SQL&&scapy
+How to build an ids || ips using python && SQL && scapy
 
 ## theory
 A pre-built X environment complete with the  needed libraries to build this type of thing from scratch.  Whether you know Python or not, this workshop will take you from scratch to working proof of concept for IDS or IPS threat modeling.
- 
+
 ## useful
 Tighten up your logic with BPF and show the n00bs how to make Python 2x fly on Production and Enterprise networks.  Better yet?  Signed, sealed and delivered using scapy for packet or frame teardown.
 
