@@ -3,7 +3,7 @@
 """
 Sniff a packet at layer 3
 Modify the packet
-Inject the packet
+Inject the packet at layer 3
 
 View in wireshark by:
     wireshark(newPkt)
