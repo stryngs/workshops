@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """
 Grab bluetooth packets from an ubertooth, drop into scapy and do something...
