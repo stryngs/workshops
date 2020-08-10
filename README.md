@@ -5,4 +5,4 @@ A place to store workshop contents and tidbits
 
 ### psGUI - Create a GUI using PowerShell and Visual Studio
 
-### DC28 - scapy/bluetooth code from DC28
+### DC28 - scapy/sql/bluetooth code from DC28
