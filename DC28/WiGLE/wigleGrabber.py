@@ -20,8 +20,8 @@ from requests.auth import HTTPBasicAuth
 
 def curlEm(bLat, tLat, lLong, rLong):
     ## wigle work
-    payload = {'latrange1':bLat, 'latrange2':tLat, 'longrange1':str(lLong), 'longrange2':str(rLong), 'api_key': (wigle_username + wigle_password).encode()}
-    req = requests.get(url='https://api.wigle.net/api/v2/network/search', params=payload, auth=HTTPBasicAuth(wigle_username, wigle_password))
+    payload = {'latrange1':bLat, 'latrange2':tLat, 'longrange1':str(lLong), 'longrange2':str(rLong), 'api_key': (api_name + api_token).encode()}
+    req = requests.get(url='https://api.wigle.net/api/v2/network/search', params=payload, auth=HTTPBasicAuth(api_name, api_token))
     ourResults = req.json()
 
     if req.status_code == 200:
@@ -167,8 +167,8 @@ if __name__ == '__main__':
     ## creds
     parser = ConfigParser()
     psr = parser.read('wigle.ini')
-    wigle_username = parser.get('creds', 'wigle_username')
-    wigle_password = parser.get('creds', 'wigle_password')
+    api_name = parser.get('creds', 'api_name')
+    api_token = parser.get('creds', 'api_token')
 
     ## bounding
     bLat =  parser.get('loc', 'bLat')

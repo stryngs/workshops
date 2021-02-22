@@ -8,6 +8,8 @@ python3 -m pip install officeTasks/officeTasks-*
 ### wigleGrabber.py
 wigleGrabber reaches out to the WiGLE API and scrapes a given place on Earth, left or right by the value of iCre based on the amount of turns listed in token.  iCre is an increment against the Latitudes for this code.  token is a counter.
 
+An example configuration file called wigle.ini has been created for you.  This is the name of the expected file.
+
 Modify accordingly if you want to involve changing the Latitudes.
 
 An example config for shifting by iCre of -.0067 would be:
@@ -25,9 +27,11 @@ The more zoomed in you are with respect to the bounding box above, the more like
 An example config for the WiGLE API credentials would be:
 ```
 [creds]
-wigle_username = <USERNAME TOKEN>
-wigle_password = <PASSWORD TOKEN>
+api_name = <USERNAME TOKEN>
+api_token = <PASSWORD TOKEN>
 ```
+
+To see an example, change api_name and api_token accordingly, then run.
 
 ### wiglePlotter.py
 wiglePlotter leverages the power of Plotly to generate a map showing the geographical area covered by the execution of wigleGrabber.py.  This map aims to assist the user in tailoring their search patterns.
