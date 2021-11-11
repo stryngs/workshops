@@ -32,7 +32,7 @@ infoLevel = 10
 warnLevel = infoLevel + 10
 guess = 'ICMP'
 
-def foo(bar, guess):
+def foo(bar):
     """The parent logic where you want to benchmark your code.  In this instance
     we are using ICMP as our final filter on the guess that it is our chokepoint
     """
@@ -46,7 +46,7 @@ def snarf(q):
     sniff(iface = 'lo', prn = lambda x: q.put(x), store = 0)
 
 
-def sniffQueue(guess):
+def sniffQueue():
     q = Queue()
     sniffer = Thread(target = snarf, args = (q,))
     sniffer.daemon = True
@@ -58,10 +58,10 @@ def sniffQueue(guess):
             if y >= infoLevel:
                 print(y)
             if y >= warnLevel:
-                foo(x, guess)
+                foo(x)
             q.task_done()
         except Empty:
             pass
 
 if __name__ == '__main__':
-    sniffQueue(guess)
+    sniffQueue()
