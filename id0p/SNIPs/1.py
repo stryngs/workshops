@@ -38,7 +38,7 @@ def pFilter(ourFilter):
     """
     def snarf(packet):
         print('\n pFilter fired')
-        print packet.summary()
+        print(packet.summary())
     return snarf
 
 if __name__ == '__main__':
