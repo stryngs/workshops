@@ -7,7 +7,6 @@ officeTasks may be found at:
     https://github.com/stryngs/officeTasks
 """
 import geoplotlib as gp
-import matplotlib.pyplot as plt
 import officeTasks as OT
 import pandas as pd
 import random
