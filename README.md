@@ -3,6 +3,6 @@ A place to store workshop contents and tidbits
 
 ### id0p - How to build an ids || ips using python && SQL && scapy
 
-### psGUI - Create a GUI using PowerShell and Visual Studio
+### custody - CTF from CarolinaCon 2022
 
-### DC28 - scapy/sql/bluetooth code from DC28
+### psGUI - Create a GUI using PowerShell and Visual Studio
