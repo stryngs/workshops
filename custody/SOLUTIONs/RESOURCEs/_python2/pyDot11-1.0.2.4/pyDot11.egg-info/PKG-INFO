@@ -1,0 +1,11 @@
+Metadata-Version: 1.0
+Name: pyDot11
+Version: 1.0.2.4
+Summary: Encrypt and Decrypt 802.11(WEP or WPA) on-the-fly
+Home-page: https://github.com/stryngs/pyDot11
+Author: stryngs
+Author-email: info@ethicalreporting.org
+License: GNU General Public License v3 or later (GPLv3+)
+Description: UNKNOWN
+Keywords: 802.11 wep wpa encryption decryption on-the-fly
+Platform: UNKNOWN
