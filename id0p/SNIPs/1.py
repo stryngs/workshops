@@ -30,7 +30,7 @@ def lFilter(ourFilter):
             return True
     return snarf
 
-def pFilter(ourFilter):
+def pFilter():
     """
     prn in sniff()
 
@@ -43,6 +43,6 @@ def pFilter(ourFilter):
 
 if __name__ == '__main__':
     LFILTER = lFilter('ICMP')
-    PRN = pFilter('ICMP')
-    bpF = 'icmp'
+    PRN = pFilter()
+    bpF = 'ip'
     p = sniff(iface = 'wlan0', prn = PRN, lfilter = LFILTER, filter = bpF)
