@@ -6,3 +6,5 @@ A place to store workshop contents and tidbits
 ### custody - CTF from CarolinaCon 2022
 
 ### psGUI - Create a GUI using PowerShell and Visual Studio
+
+### v2 - Yet another talk on our friend scapy
